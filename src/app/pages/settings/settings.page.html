@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Settings</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" *ngIf="!loading">
+  <ion-text><h4>General</h4></ion-text>
+  <ion-list>
+    <ion-item>
+      <ion-label>Theme</ion-label>
+      <ion-select [(ngModel)]="settings.theme" (ionChange)="enableGeneralSaveButton()">
+        <ion-select-option value="light">Light</ion-select-option>
+        <ion-select-option value="dark">Dark</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Language</ion-label>
+      <ion-select [(ngModel)]="settings.language" (ionChange)="enableGeneralSaveButton()">
+        <ion-select-option value="en">English</ion-select-option>
+        <ion-select-option value="it">Italiano</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h2>Remove ADS</h2>
+        <p>Remove all in-app ADS forever</p>
+      </ion-label>
+      <ion-button color="warning" (click)="removeAds()">0,99 <ion-icon name="logo-euro"></ion-icon></ion-button>
+    </ion-item>
+    <ion-button *ngIf="generalSaveButtonEnabled" expand="full" color="primary" (click)="saveGeneral()">Save settings</ion-button>
+  </ion-list>
+  <ion-text><h4>Advanced</h4></ion-text>
+  <ion-list>
+    <ion-item>
+      <ion-label>
+        <h2>Export Settings JSON</h2>
+        <p>Export file in APP_DATA folder</p>
+      </ion-label>
+      <ion-button color="primary" (click)="exportSettings()">Export <ion-icon name="download"></ion-icon></ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h2>Import Settings JSON</h2>
+        <p>Import file from APP_DATA folder</p>
+      </ion-label>
+      <ion-button slot="end" color="success" (click)="importSettings()">Import <ion-icon name="cloud-upload"></ion-icon></ion-button>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <h2>Reset Settings</h2>
+        <p>Reset all settings, useful if app breaks</p>
+      </ion-label>
+      <ion-button color="danger" (click)="resetSettings()">Reset <ion-icon name="refresh"></ion-icon></ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>

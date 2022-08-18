@@ -1,22 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { SplashScreen } from '@capacitor/splash-screen'
+import { Storage } from '@ionic/storage-angular';
+import { Settings } from './models/settings.model';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+  styleUrls: ['app.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  constructor() {
-    this.initializeApp();
+  constructor(private storage: Storage) {
+    
   }
 
-  initializeApp() {
-    /* To make sure we provide the fastest app loading experience
-       for our users, hide the splash screen automatically
-       when the app is ready to be used:
+  async ngOnInit() {
 
-        https://capacitor.ionicframework.com/docs/apis/splash-screen#hiding-the-splash-screen
-    */
-    SplashScreen.hide();
+    await this.storage.create()
+
+    if(!await this.storage.get('settings'))
+      this.storage.set('settings',new Settings())
+
+    SplashScreen.hide()
+
   }
+
 }

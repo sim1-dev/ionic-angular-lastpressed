@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Timer Detail"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content *ngIf="!loading" class="ion-padding">
+  <ion-icon [name]="timer.icon"></ion-icon>
+  <ion-text><h1>{{timer.name}}</h1></ion-text>
+</ion-content>
+
+<ion-footer *ngIf="!loading">
+  <ion-row class="ion-no-padding">
+    <ion-col size="6" class="ion-no-padding">
+      <ion-button expand="full" color="warning" (click)="openModal('edit', category, timer)">Edit</ion-button>
+    </ion-col>
+    <ion-col size="6" class="ion-no-padding">
+      <ion-button expand="full" color="danger" (click)="openDeleteTimerDialog(category, timer)">Delete</ion-button>
+    </ion-col>
+  </ion-row>
+</ion-footer>
