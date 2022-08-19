@@ -1,7 +1,7 @@
 import { Component, ViewEncapsulation } from '@angular/core';
 import { SplashScreen } from '@capacitor/splash-screen'
 import { Storage } from '@ionic/storage-angular';
-import { Settings } from './models/settings.model';
+import { StorageService } from './services/storage.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -9,7 +9,7 @@ import { Settings } from './models/settings.model';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  constructor(private storage: Storage) {
+  constructor(private storage: Storage, public storageService: StorageService) { 
     
   }
 
@@ -18,7 +18,7 @@ export class AppComponent {
     await this.storage.create()
 
     if(!await this.storage.get('settings'))
-      this.storage.set('settings',new Settings())
+      await this.storageService.resetSettings()
 
     SplashScreen.hide()
 
