@@ -4,13 +4,15 @@ import { Storage } from '@ionic/storage-angular';
 import { Category } from '../models/category.model';
 import { Settings } from '../models/settings.model';
 import { Timer } from '../models/timer.model';
+import { DeviceService } from './device.service';
+import { LanguageService } from './language.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
 
-  constructor(public storage: Storage) { }
+  constructor(public storage: Storage, public deviceService: DeviceService) { }
 
   //Categories
   async getCategories() {
@@ -142,7 +144,10 @@ export class StorageService {
   }
 
   async resetSettings() {
-    return await this.storage.set('settings', new Settings())
+    let newSettings = new Settings()
+    newSettings.theme = await this.deviceService.getTheme()
+    newSettings.language = await this.deviceService.getLanguage()
+    return this.storage.set('settings',newSettings)
   }
 
   async exportSettings() {

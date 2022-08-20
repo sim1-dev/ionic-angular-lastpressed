@@ -4,6 +4,7 @@ import { AlertController, LoadingController, ModalController, ToastController } 
 import { Subscription } from 'rxjs';
 import { Category } from 'src/app/models/category.model';
 import { Timer } from 'src/app/models/timer.model';
+import { LanguageService } from 'src/app/services/language.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { TimeService } from 'src/app/services/time.service';
 import { TimersModalComponent } from '../timers-modal/timers-modal.component';
@@ -23,7 +24,7 @@ export class TimersDetailComponent {
   now: Date = new Date()
   interval: any
 
-  constructor(private route: ActivatedRoute, public storageService: StorageService, public loadingController: LoadingController, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public timeService: TimeService, public router: Router) { }
+  constructor(private route: ActivatedRoute, public storageService: StorageService, public loadingController: LoadingController, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public timeService: TimeService, public router: Router, public langService: LanguageService) { }
 
   async ionViewDidEnter() {
     this.subscriptions.add(
@@ -42,7 +43,7 @@ export class TimersDetailComponent {
   async getTimerDetails() {
     this.loading = true
     let loading = await this.loadingController.create({
-      message: 'Loading...'
+      message: this.langService.dictionary.loading
     })
 
     loading.present()
@@ -72,16 +73,16 @@ export class TimersDetailComponent {
 
   async openDeleteTimerDialog(category: Category, timer: Timer) {
     const alert = await this.alertController.create({
-      header: 'Alert',
-      message: 'Are you sure you want to delete timer '+ timer.name +'?',
+      header: this.langService.dictionary.alert,
+      message: this.langService.dictionary.deletePrompt+' '+this.langService.dictionary.timer+' '+timer.name+'?',
       buttons: [
-        'Cancel',
+        this.langService.dictionary.cancel,
         {
-          text: 'Delete',
+          text: this.langService.dictionary.delete,
           handler: async () => {
             await this.storageService.deleteTimer(category, timer)
             const toast = await this.toastController.create({
-              message: 'Timer '+ timer.name +' deleted successfully.',
+              message: this.langService.dictionary.timer+' '+timer.name+' '+this.langService.dictionary.deletedSuccess,
               color: 'success',
               duration: 2000,
               cssClass: 'tabs-bottom',

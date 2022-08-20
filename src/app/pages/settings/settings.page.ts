@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Directory } from '@capacitor/filesystem';
 import { AlertController, LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { Settings } from 'src/app/models/settings.model';
+import { LanguageService } from 'src/app/services/language.service';
 import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class SettingsPage {
   settings: Settings
   generalSaveButtonEnabled: boolean = false
 
-  constructor(private storageService: StorageService, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController) { }
+  constructor(private storageService: StorageService, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController, public langService: LanguageService) { }
 
   async ionViewDidEnter() {
     await this.getSettings()
@@ -22,7 +23,7 @@ export class SettingsPage {
 
   async getSettings() {
     let loader = await this.loadingController.create({
-      message: 'Loading...'
+      message: this.langService.dictionary.loading
     })
 
     loader.present()
@@ -33,19 +34,19 @@ export class SettingsPage {
 
   async resetSettings() {
     const alert = await this.alertController.create({
-      header: 'Alert',
-      message: 'Are you sure you want to reset all settings?',
+      header: this.langService.dictionary.alert,
+      message: this.langService.dictionary.resetSettingsPrompt,
       buttons: [
-        'Cancel',
+        this.langService.dictionary.cancel,
         {
-          text: 'Reset',
+          text: this.langService.dictionary.reset,
           handler: async () => {
             this.loading = true
             await this.storageService.resetSettings()
             await this.getSettings()
             this.loading = false
             this.toastController.create({
-              message: 'Settings reset successfully.',
+              message: this.langService.dictionary.settingsResetSuccess,
               color: 'success',
               duration: 2000,
               cssClass: 'tabs-bottom',
@@ -62,14 +63,14 @@ export class SettingsPage {
     let response = await this.storageService.exportSettings()
     if(response.result) {
       this.toastController.create({
-        message: 'Settings exported successfully in ' + response.message,
+        message: this.langService.dictionary.settingsExportSuccess+' '+response.message,
         color: 'success',
         duration: 3000,
         cssClass: 'tabs-bottom',
       }).then(toast => toast.present())
     } else {
       this.toastController.create({
-        message: 'Error exporting settings: ' + response.message,
+        message: this.langService.dictionary.settingsExportFailure+' '+response.message,
         color: 'danger',
         duration: 2000,
         cssClass: 'tabs-bottom',
@@ -79,15 +80,15 @@ export class SettingsPage {
 
   async importSettings() {
     const alert = await this.alertController.create({
-      header: 'Alert',
-      message: 'Are you sure you want to import setting from {{appDir}}/files/lastpressed/settings.json? This will overwrite your current settings.',
+      header: this.langService.dictionary.alert,
+      message: this.langService.dictionary.importSettingsPrompt,
       buttons: [
-        'Cancel',
+        this.langService.dictionary.cancel,
         {
-          text: 'Import',
+          text: this.langService.dictionary.import,
           handler: async () => {
             let loader = await this.loadingController.create({
-              message: 'Loading...'
+              message: this.langService.dictionary.loading
             })
         
             loader.present()
@@ -97,14 +98,14 @@ export class SettingsPage {
             loader.dismiss()
             if(response.result) {
               this.toastController.create({
-                message: 'Settings imported successfully.',
+                message: this.langService.dictionary.settingsImportSuccess,
                 color: 'success',
                 duration: 1500,
                 cssClass: 'tabs-bottom',
               }).then(toast => toast.present())
             } else {
               this.toastController.create({
-                message: 'Error importing settings: ' + response.message,
+                message: this.langService.dictionary.settingsImportFailure+' ' + response.message,
                 color: 'danger',
                 duration: 2000,
                 cssClass: 'tabs-bottom',
@@ -125,7 +126,7 @@ export class SettingsPage {
   async saveGeneral() {
     this.loading = true
     let loader = await this.loadingController.create({
-      message: 'Saving...'
+      message: this.langService.dictionary.saving
     })
     loader.present()
     this.generalSaveButtonEnabled = false
@@ -133,7 +134,7 @@ export class SettingsPage {
     loader.dismiss()
     this.loading = false
     this.toastController.create({
-      message: 'Settings saved successfully.',
+      message: this.langService.dictionary.settingsSaveSuccess,
       color: 'success',
       duration: 2000,
       cssClass: 'tabs-bottom',

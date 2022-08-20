@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Categories
+      {{langService.dictionary.categories}}
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,7 +9,7 @@
 <ion-content class="ion-padding" *ngIf="!loading">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Categories</ion-title>
+      <ion-title size="large">{{langService.dictionary.categories}}</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -23,10 +23,10 @@
 
   <ion-text color="light" class="text-center">
     <h6 *ngIf="!categories || categories.length < 2">
-      No custom categories yet. Let's create one <ion-icon name="happy" color="warning"></ion-icon>
+      {{langService.dictionary.noCategories}} <ion-icon name="happy" color="warning"></ion-icon>
     </h6>
   </ion-text>
 
-  <ion-button class="ion-margin-top" expand="full" (click)="openModal('add')">Add Category</ion-button>
+  <ion-button class="ion-margin-top" expand="full" (click)="openModal('add')">{{langService.dictionary.addCategory}}</ion-button>
 
 </ion-content>

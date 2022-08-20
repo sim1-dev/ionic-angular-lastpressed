@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button text="Timer Detail"></ion-back-button>
+      <ion-back-button [text]="langService.dictionary.timerDetail"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -14,10 +14,10 @@
 <ion-footer *ngIf="!loading">
   <ion-row class="ion-no-padding">
     <ion-col size="6" class="ion-no-padding">
-      <ion-button expand="full" color="warning" (click)="openModal('edit', category, timer)">Edit</ion-button>
+      <ion-button expand="full" color="warning" (click)="openModal('edit', category, timer)">{{langService.dictionary.edit}}</ion-button>
     </ion-col>
     <ion-col size="6" class="ion-no-padding">
-      <ion-button expand="full" color="danger" (click)="openDeleteTimerDialog(category, timer)">Delete</ion-button>
+      <ion-button expand="full" color="danger" (click)="openDeleteTimerDialog(category, timer)">{{langService.dictionary.delete}}</ion-button>
     </ion-col>
   </ion-row>
 </ion-footer>
