@@ -1,6 +1,6 @@
 <ion-header class="ion-padding">
   <ion-toolbar>
-    <ion-title>Add Timer</ion-title>
+    <ion-title>{{langService.dictionary.addTimer}}</ion-title>
     <ion-button slot="end" color="danger" (click)="close()"><ion-icon name="close"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
@@ -8,7 +8,7 @@
 <ion-content class="ion-padding">
   <form [formGroup]="timerForm" (ngSubmit)="saveTimer()">
     <ion-item>
-      <ion-label position="stacked">Timer name</ion-label>
+      <ion-label position="stacked">{{langService.dictionary.timerName}}</ion-label>
       <ion-input formControlName="name" type="text" required></ion-input>
     </ion-item>
     <ion-text color="danger" *ngIf="timerForm.get('name').errors && timerForm.get('name').touched">
@@ -21,7 +21,7 @@
       <ion-select-option value="add">add</ion-select-option>
       <ion-select-option value="close">close</ion-select-option>
     </ion-select>
-    Icon preview: <ion-icon [name]="timerForm.controls.icon.value"></ion-icon>
+    {{langService.dictionary.iconPreview}}: <ion-icon [name]="timerForm.controls.icon.value"></ion-icon>
     <ion-button class="ion-margin-top" expand="full" type="submit" [disabled]="timerForm.invalid">{{action == 'add' ? 'Create' : 'Update'}}</ion-button>
   </form>
 </ion-content>

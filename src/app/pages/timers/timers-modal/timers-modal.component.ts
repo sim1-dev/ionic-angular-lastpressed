@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { Category } from 'src/app/models/category.model';
 import { Timer } from 'src/app/models/timer.model';
+import { LanguageService } from 'src/app/services/language.service';
 import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
@@ -18,7 +19,7 @@ export class TimersModalComponent implements OnInit {
 
   timerForm: FormGroup
 
-  constructor(public modalController: ModalController, public formBuilder: FormBuilder, public storageService: StorageService) {
+  constructor(public modalController: ModalController, public formBuilder: FormBuilder, public storageService: StorageService, public langService: LanguageService) {
   }
 
   ngOnInit() {

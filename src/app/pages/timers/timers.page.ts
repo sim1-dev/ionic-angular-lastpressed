@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { AlertController, LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { Category } from 'src/app/models/category.model';
 import { Timer } from 'src/app/models/timer.model';
+import { LanguageService } from 'src/app/services/language.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { TimeService } from 'src/app/services/time.service';
 import { TimersModalComponent } from './timers-modal/timers-modal.component';
@@ -18,7 +19,7 @@ export class TimersPage {
   now: Date = new Date()
   interval: any
 
-  constructor(private storageService: StorageService, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController, public timeService: TimeService) { }
+  constructor(private storageService: StorageService, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController, public timeService: TimeService, public langService: LanguageService) { }
 
   async ionViewDidEnter() {
     

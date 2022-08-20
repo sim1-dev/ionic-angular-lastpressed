@@ -5,6 +5,7 @@ import { Category } from '../models/category.model';
 import { Settings } from '../models/settings.model';
 import { Timer } from '../models/timer.model';
 import { DeviceService } from './device.service';
+import { LanguageService } from './language.service';
 
 @Injectable({
   providedIn: 'root'
