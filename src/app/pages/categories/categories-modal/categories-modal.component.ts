@@ -4,6 +4,7 @@ import { ModalController } from '@ionic/angular'
 import { ValidateCategory } from 'src/app/validators/categories.validator';
 import { StorageService } from 'src/app/services/storage.service';
 import { Category } from 'src/app/models/category.model';
+import { LanguageService } from 'src/app/services/language.service';
 
 @Component({
   selector: 'app-categories-modal',
@@ -18,7 +19,7 @@ export class CategoriesModalComponent implements OnInit {
 
   categoryForm: FormGroup
 
-  constructor(public modalController: ModalController, public formBuilder: FormBuilder, public storageService: StorageService) {
+  constructor(public modalController: ModalController, public formBuilder: FormBuilder, public storageService: StorageService, public langService: LanguageService) {
   }
 
   ngOnInit() {

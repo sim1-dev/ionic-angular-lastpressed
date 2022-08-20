@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Directory } from '@capacitor/filesystem';
 import { AlertController, LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { Settings } from 'src/app/models/settings.model';
+import { LanguageService } from 'src/app/services/language.service';
 import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class SettingsPage {
   settings: Settings
   generalSaveButtonEnabled: boolean = false
 
-  constructor(private storageService: StorageService, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController) { }
+  constructor(private storageService: StorageService, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController, public langService: LanguageService) { }
 
   async ionViewDidEnter() {
     await this.getSettings()
@@ -22,7 +23,7 @@ export class SettingsPage {
 
   async getSettings() {
     let loader = await this.loadingController.create({
-      message: 'Loading...'
+      message: this.langService.dictionary.loading
     })
 
     loader.present()
@@ -33,12 +34,12 @@ export class SettingsPage {
 
   async resetSettings() {
     const alert = await this.alertController.create({
-      header: 'Alert',
+      header: this.langService.dictionary.alert,
       message: 'Are you sure you want to reset all settings?',
       buttons: [
-        'Cancel',
+        this.langService.dictionary.cancel,
         {
-          text: 'Reset',
+          text: this.langService.dictionary.reset,
           handler: async () => {
             this.loading = true
             await this.storageService.resetSettings()
@@ -79,15 +80,15 @@ export class SettingsPage {
 
   async importSettings() {
     const alert = await this.alertController.create({
-      header: 'Alert',
+      header: this.langService.dictionary.alert,
       message: 'Are you sure you want to import setting from {{appDir}}/files/lastpressed/settings.json? This will overwrite your current settings.',
       buttons: [
-        'Cancel',
+        this.langService.dictionary.cancel,
         {
           text: 'Import',
           handler: async () => {
             let loader = await this.loadingController.create({
-              message: 'Loading...'
+              message: this.langService.dictionary.loading
             })
         
             loader.present()
@@ -125,7 +126,7 @@ export class SettingsPage {
   async saveGeneral() {
     this.loading = true
     let loader = await this.loadingController.create({
-      message: 'Saving...'
+      message: this.langService.dictionary.saving
     })
     loader.present()
     this.generalSaveButtonEnabled = false

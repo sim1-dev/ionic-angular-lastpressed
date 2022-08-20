@@ -31,8 +31,31 @@ export class Dictionary {
 }
 
 export interface DictionaryInterface {
+    timer
     timers
     addTimer
     timerName
     iconPreview
+    timerDetail
+    category
+    categories
+    categoryName
+    noCategories
+    addCategory
+    categoryNameExists
+    categoryNameRequired
+    categoryTimersWillBeLost
+    settings
+    add
+    save
+    edit
+    delete
+    reset
+    cancel
+    buttonPressed
+    deletePrompt
+    deletedSuccess
+    loading
+    alert
+    saving
 }

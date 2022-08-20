@@ -33,7 +33,7 @@ export class TimersPage {
   async getCategories() {
     this.loading = true
     let loading = await this.loadingController.create({
-      message: 'Loading...'
+      message: this.langService.dictionary.loading
     })
 
     loading.present()
@@ -64,7 +64,7 @@ export class TimersPage {
   async resetLastPressed(category: Category, timer: Timer) {
     this.storageService.resetTimer(category, timer)
     const toast = await this.toastController.create({
-      message: 'Timer '+ timer.name +' button pressed!',
+      message: this.langService.dictionary.timer+' '+timer.name+' '+this.langService.dictionary.buttonPressed,
       color: 'success',
       duration: 2000,
       cssClass: 'tabs-bottom',
