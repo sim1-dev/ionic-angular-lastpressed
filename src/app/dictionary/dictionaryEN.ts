@@ -24,6 +24,28 @@ export class Dictionary implements DictionaryInterface {
 
     //Settings
     settings = "Settings"
+    general = "General"
+    advanced = "Advanced"
+    theme = "Theme"
+    light = "Light"
+    dark = "Dark"
+    language = "Language"
+    removeAds = "Remove ADS"
+    removeAdsDescription = "Remove all in-app ADS forever"
+    importSettings = "Import settings" 
+    importSettingsDescription = "Import file from APP_DATA folder"
+    exportSettings = "Export settings"
+    exportSettingsDescription = "Export file in APP_DATA folder"
+    resetSettings = "Reset settings"
+    resetSettingsDescription = "Reset all settings, useful if app breaks"
+    resetSettingsPrompt = "Are you sure you want to reset all settings?"
+    settingsResetSuccess = "Settings resetted successfully"
+    settingsExportSuccess = "Settings exported successfully:"
+    settingsExportFailure = "Error exporting settings:"
+    importSettingsPrompt = "Are you sure you want to import setting from {{appDir}}/files/lastpressed/settings.json? This will overwrite your current settings."
+    settingsImportSuccess = "Settings imported successfully"
+    settingsImportFailure = "Error importing settings:"
+    settingsSaveSuccess = "Settings saved successfully"
 
     //Actions
     save = "Save"
@@ -31,12 +53,15 @@ export class Dictionary implements DictionaryInterface {
     edit = "Edit"
     delete = "Delete"
     reset = "Reset"
+    import = "Import"
+    export = "Export"
     cancel = "Cancel"
 
-    //Statuses
+    //General statuses
     loading = "Loading..."
     deletePrompt = "Are you sure you want to delete"
     deletedSuccess = "deleted successfully."
+    savedSuccess = "saved successfully."
     buttonPressed = "button pressed!"
     alert = "Alert"
     saving = "Saving..."

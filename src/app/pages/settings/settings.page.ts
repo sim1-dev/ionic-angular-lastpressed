@@ -35,7 +35,7 @@ export class SettingsPage {
   async resetSettings() {
     const alert = await this.alertController.create({
       header: this.langService.dictionary.alert,
-      message: 'Are you sure you want to reset all settings?',
+      message: this.langService.dictionary.resetSettingsPrompt,
       buttons: [
         this.langService.dictionary.cancel,
         {
@@ -46,7 +46,7 @@ export class SettingsPage {
             await this.getSettings()
             this.loading = false
             this.toastController.create({
-              message: 'Settings reset successfully.',
+              message: this.langService.dictionary.settingsResetSuccess,
               color: 'success',
               duration: 2000,
               cssClass: 'tabs-bottom',
@@ -63,14 +63,14 @@ export class SettingsPage {
     let response = await this.storageService.exportSettings()
     if(response.result) {
       this.toastController.create({
-        message: 'Settings exported successfully in ' + response.message,
+        message: this.langService.dictionary.settingsExportSuccess+' '+response.message,
         color: 'success',
         duration: 3000,
         cssClass: 'tabs-bottom',
       }).then(toast => toast.present())
     } else {
       this.toastController.create({
-        message: 'Error exporting settings: ' + response.message,
+        message: this.langService.dictionary.settingsExportFailure+' '+response.message,
         color: 'danger',
         duration: 2000,
         cssClass: 'tabs-bottom',
@@ -81,11 +81,11 @@ export class SettingsPage {
   async importSettings() {
     const alert = await this.alertController.create({
       header: this.langService.dictionary.alert,
-      message: 'Are you sure you want to import setting from {{appDir}}/files/lastpressed/settings.json? This will overwrite your current settings.',
+      message: this.langService.dictionary.importSettingsPrompt,
       buttons: [
         this.langService.dictionary.cancel,
         {
-          text: 'Import',
+          text: this.langService.dictionary.import,
           handler: async () => {
             let loader = await this.loadingController.create({
               message: this.langService.dictionary.loading
@@ -98,14 +98,14 @@ export class SettingsPage {
             loader.dismiss()
             if(response.result) {
               this.toastController.create({
-                message: 'Settings imported successfully.',
+                message: this.langService.dictionary.settingsImportSuccess,
                 color: 'success',
                 duration: 1500,
                 cssClass: 'tabs-bottom',
               }).then(toast => toast.present())
             } else {
               this.toastController.create({
-                message: 'Error importing settings: ' + response.message,
+                message: this.langService.dictionary.settingsImportFailure+' ' + response.message,
                 color: 'danger',
                 duration: 2000,
                 cssClass: 'tabs-bottom',
@@ -134,7 +134,7 @@ export class SettingsPage {
     loader.dismiss()
     this.loading = false
     this.toastController.create({
-      message: 'Settings saved successfully.',
+      message: this.langService.dictionary.settingsSaveSuccess,
       color: 'success',
       duration: 2000,
       cssClass: 'tabs-bottom',

@@ -46,15 +46,40 @@ export interface DictionaryInterface {
     categoryNameRequired
     categoryTimersWillBeLost
     settings
+    general
+    advanced
+    theme
+    light
+    dark
+    language
+    removeAds
+    removeAdsDescription
+    importSettings
+    importSettingsDescription
+    exportSettings
+    exportSettingsDescription
+    resetSettings
+    resetSettingsDescription
+    resetSettingsPrompt
+    settingsResetSuccess
+    settingsExportSuccess
+    settingsExportFailure
+    importSettingsPrompt
+    settingsImportSuccess
+    settingsImportFailure
+    settingsSaveSuccess
     add
     save
     edit
     delete
     reset
+    import
+    export: string // error without type definition xD
     cancel
     buttonPressed
     deletePrompt
     deletedSuccess
+    savedSuccess
     loading
     alert
     saving
