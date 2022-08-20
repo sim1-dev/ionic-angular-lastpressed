@@ -36,7 +36,7 @@ export class Dictionary implements DictionaryInterface {
     exportSettingsDescription = "Esporta file nella cartella APP_DATA"
     resetSettings = "Ripristina impostazioni"
     resetSettingsDescription = "Ripristina le impostazioni, utile se si rompe qualcosa in app"
-    resetSettingsPrompt = "Sei sicuro di voler ripristinare le impostazioni?"
+    resetSettingsPrompt = "Sei sicuro di voler ripristinare tutte le impostazioni?"
     settingsResetSuccess = "Impostazioni ripristinate correttamente."
     settingsExportSuccess = "Impostazioni esportate correttamente:"
     settingsExportFailure = "Errore esportazione impostazioni:"
@@ -44,6 +44,7 @@ export class Dictionary implements DictionaryInterface {
     settingsImportSuccess = "Impostazioni importate correttamente"
     settingsImportFailure = "Errore importazione impostazioni:"
     settingsSaveSuccess = "Impostazioni salvate correttamente"
+    requiresAppReload = "Richiede una ricarica dell'app"
 
     //Actions
     save = "Salva"

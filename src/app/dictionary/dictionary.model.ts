@@ -68,6 +68,7 @@ export interface DictionaryInterface {
     settingsImportSuccess
     settingsImportFailure
     settingsSaveSuccess
+    requiresAppReload
     add
     save
     edit

@@ -15,7 +15,10 @@
       </ion-select>
     </ion-item>
     <ion-item>
-      <ion-label>{{langService.dictionary.language}}</ion-label>
+      <ion-label>
+        <h2>{{langService.dictionary.language}}</h2>
+        <p>{{langService.dictionary.requiresAppReload}}</p>
+      </ion-label>
       <ion-select [(ngModel)]="settings.language" (ionChange)="enableGeneralSaveButton()">
         <ion-select-option value="en">English</ion-select-option>
         <ion-select-option value="it">Italiano</ion-select-option>

@@ -46,6 +46,7 @@ export class Dictionary implements DictionaryInterface {
     settingsImportSuccess = "Settings imported successfully"
     settingsImportFailure = "Error importing settings:"
     settingsSaveSuccess = "Settings saved successfully"
+    requiresAppReload = "App reload required"
 
     //Actions
     save = "Save"
