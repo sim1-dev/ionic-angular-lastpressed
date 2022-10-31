@@ -13,17 +13,17 @@
     </ion-toolbar>
   </ion-header>
   <ion-accordion-group [multiple]="true" value="acc">
-    <ion-accordion *ngFor="let category of categories" value="acc">
+    <ion-accordion toggleIcon="caret-down" *ngFor="let category of categories" value="acc">
       <ion-item slot="header">
         <ion-label>{{category.name}}</ion-label>
       </ion-item>
       <ion-list slot="content" class="ion-padding">
         <ion-item *ngFor="let timer of category.timers">
-          <ion-icon [name]="timer.icon"></ion-icon>
+          <ion-icon [name]="timer.icon" class="timerIcon"></ion-icon>
           <ion-label>{{timer.name}}</ion-label>
           {{getTimerDuration(timer)}}
           <ion-icon slot="end" name="refresh-circle" color="success" (click)="resetLastPressed(category, timer)"></ion-icon>
-          <ion-icon slot="end" name="eye" color="primary" [routerLink]="['detail', category.id, timer.id]"></ion-icon>
+          <ion-icon slot="end" name="eye" color="secondary" [routerLink]="['detail', category.id, timer.id]"></ion-icon>
           <!-- <ion-icon slot="end" name="pencil" color="secondary" (click)="openModal('edit', category, timer)"></ion-icon>
           <ion-icon slot="end" name="close" color="danger" (click)="openDeleteTimerDialog(category, timer)"></ion-icon> -->
         </ion-item>

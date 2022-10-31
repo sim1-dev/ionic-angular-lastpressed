@@ -29,7 +29,7 @@ export class Dictionary implements DictionaryInterface {
     dark = "Scuro"
     language = "Lingua"
     removeAds = "Rimuovi pubblicità"
-    removeAdsDescription = "Rimuovi permanentemente le pubblicità in app"
+    removeAdsDescription = "Rimuovi le pubblicità in app"
     importSettings = "Importa impostazioni"
     importSettingsDescription = "Importa file dalla cartella APP_DATA"
     exportSettings = "Esporta impostazioni"

@@ -10,3 +10,55 @@ ios .tabs-bottom {
 .ios .header-top {
     top: 44px !important;
   }
+
+
+//Dark Theme Gradient
+@media (prefers-color-scheme: dark) {
+
+  // Gradient Border Bottom
+  ion-header::after {
+    content:" " !important;
+    width:100% !important;
+    height:3px !important;
+    display:block !important;
+    background: linear-gradient(50deg, rgba(1,241,242,1) 0%, rgba(177,0,255,1) 49%, rgba(241,96,187,1) 100%) !important;
+  }
+
+  //Gradient Border Top
+  ion-tab-bar {
+    border-width: 3px 0 0 0 !important;
+    border-style: solid !important;
+    border-image:linear-gradient(50deg, rgba(1,241,242,1) 0%, rgba(177,0,255,1) 49%, rgba(241,96,187,1) 100%) 1% round !important;
+  }
+
+  // Gradient Text
+  ion-title, ion-tab-bar ion-tab-button.tab-selected ion-label, ion-tab-bar ion-tab-button.tab-selected ion-icon, .timerIcon, .ion-accordion-toggle-icon, ion-accordion > ion-item > ion-label {
+    color:var(--ion-color-primary) !important;
+    background-image: linear-gradient(50deg, rgba(1,241,242,1) 0%, rgba(177,0,255,1) 49%, rgba(241,96,187,1) 100%) !important;
+    fill: url(#mainGradient) !important; //SVG Gradient Fill
+    background-size: 100% !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important; 
+    -moz-background-clip: text !important;
+    -moz-text-fill-color: transparent !important;
+  }
+
+  ion-tab-bar ion-tab-button ion-icon {
+    display: initial !important;
+  }
+
+  // Gradient Background Color + Hover
+  ion-button {
+    --background: linear-gradient(50deg, rgba(1,241,242,1) 0%, rgba(177,0,255,1) 49%, rgba(241,96,187,1) 100%) !important;
+    -webkit-transition: all 0.2s linear !important;
+      -moz-transition: all 0.2s linear !important;
+        -o-transition: all 0.2s linear !important;
+          transition: all 0.2s linear !important;
+  }ion-button:hover {
+    --background: linear-gradient(-25deg, rgba(1,241,242,1) 0%, rgba(177,0,255,1) 49%, rgba(241,96,187,1) 100%) !important;
+    background-position: 0 0 !important;
+    transition: background ease-out 1s !important;
+  }
+
+ 
+}
