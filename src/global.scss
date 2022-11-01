@@ -32,6 +32,7 @@
    */
   
   body {
+    --ion-color-gradient: linear-gradient(50deg, rgba(1,241,242,1) 0%, rgba(177,0,255,1) 49%, rgba(241,96,187,1) 100%);
     --ion-color-primary: #a72afe;
     --ion-color-primary-rgb: 66,140,255;
     --ion-color-primary-contrast: #ffffff;
@@ -39,7 +40,7 @@
     --ion-color-primary-shade: #3a7be0;
     --ion-color-primary-tint: #5598ff;
   
-    --ion-color-secondary: #1AB1D9;
+    --ion-color-secondary: #17d3f4;
     --ion-color-secondary-rgb: 80,200,255;
     --ion-color-secondary-contrast: #ffffff;
     --ion-color-secondary-contrast-rgb: 255,255,255;

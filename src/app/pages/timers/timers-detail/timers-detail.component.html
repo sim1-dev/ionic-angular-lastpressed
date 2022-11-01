@@ -7,8 +7,21 @@
 </ion-header>
 
 <ion-content *ngIf="!loading" class="ion-padding">
-  <ion-icon [name]="timer.icon"></ion-icon>
-  <ion-text><h1>{{timer.name}}</h1></ion-text>
+  <ion-row>
+    <ion-col>
+      <div class="ion-text-center">
+        <h1>{{timer.name}}</h1>
+      </div>
+      <div class="ion-text-center">
+        <ion-icon [name]="timer.icon" class="rainbow" style="font-size:12em"></ion-icon>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-row class="bg-gray">
+    <ion-col>
+      <ion-text class="ion-text-center"><h2 class="rainbow">Timer Details</h2></ion-text>
+    </ion-col>
+  </ion-row>
 </ion-content>
 
 <ion-footer *ngIf="!loading">

@@ -13,15 +13,32 @@
     </ion-item>
     <ion-text color="danger" *ngIf="timerForm.get('name').errors && timerForm.get('name').touched">
       <h6>
-        {{timerForm.get('name').errors?.required ? 'Timer name is required' : ''}}
+        {{timerForm.get('name').errors?.required ? langService.dictionary.timerNameRequired : ''}}
       </h6>
     </ion-text>
     <ion-select placeholder="Select icon" formControlName="icon">
-      <ion-select-option value="alarm" selected>alarm</ion-select-option>
-      <ion-select-option value="add">add</ion-select-option>
-      <ion-select-option value="close">close</ion-select-option>
+      <ion-select-option value="alarm" selected>Alarm clock</ion-select-option>
+      <ion-select-option value="medical">Medicine</ion-select-option>
+      <ion-select-option value="paw">Paw</ion-select-option>
+      <ion-select-option value="cafe">Coffee</ion-select-option>
+      <ion-select-option value="barbell">Gym barbell</ion-select-option>
+      <ion-select-option value="book">Book</ion-select-option>
+      <ion-select-option value="leaf">Leaf</ion-select-option>
+      <ion-select-option value="footsteps">Footsteps</ion-select-option>
+      <ion-select-option value="water">Water drop</ion-select-option>
+      <ion-select-option value="card">Credit card</ion-select-option>
+      <ion-select-option value="wine">Wine</ion-select-option>
     </ion-select>
-    {{langService.dictionary.iconPreview}}: <ion-icon [name]="timerForm.controls.icon.value"></ion-icon>
-    <ion-button class="ion-margin-top" expand="full" type="submit" [disabled]="timerForm.invalid">{{action == 'add' ? 'Create' : 'Update'}}</ion-button>
+    <ion-row class="ion-padding">
+      <ion-col>
+        <div class="ion-text-center">
+          <h1 class="rainbow">{{langService.dictionary.iconPreview}}</h1>
+        </div>
+        <div class="ion-text-center">
+          <ion-icon [name]="timerForm.controls.icon.value" class="rainbow" style="font-size:12em"></ion-icon>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-button class="ion-margin-top" expand="full" type="submit" [disabled]="timerForm.invalid">{{action == 'add' ? langService.dictionary.add : langService.dictionary.edit}}</ion-button>
   </form>
 </ion-content>

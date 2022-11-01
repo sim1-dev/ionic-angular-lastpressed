@@ -12,8 +12,8 @@
       <ion-title size="large">{{langService.dictionary.timers}}</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-accordion-group [multiple]="true" value="acc">
-    <ion-accordion toggleIcon="caret-down" *ngFor="let category of categories" value="acc">
+  <ion-accordion-group [multiple]="true" value="acc0">
+    <ion-accordion toggleIcon="caret-down" *ngFor="let category of categories; let i = index" [value]="'acc'+i">
       <ion-item slot="header">
         <ion-label>{{category.name}}</ion-label>
       </ion-item>
@@ -27,7 +27,7 @@
           <!-- <ion-icon slot="end" name="pencil" color="secondary" (click)="openModal('edit', category, timer)"></ion-icon>
           <ion-icon slot="end" name="close" color="danger" (click)="openDeleteTimerDialog(category, timer)"></ion-icon> -->
         </ion-item>
-        <ion-button class="ion-margin-top" expand="full" (click)="openModal('add', category)">{{langService.dictionary.addTimer}}<ion-icon name="add"></ion-icon></ion-button>
+        <ion-button class="ion-margin-top" expand="full" (click)="openModal('add', category)">{{langService.dictionary.addTimer}}<!--<ion-icon name="add"></ion-icon>--></ion-button>
       </ion-list>
     </ion-accordion>
   </ion-accordion-group>

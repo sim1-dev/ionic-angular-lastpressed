@@ -37,6 +37,8 @@ export interface DictionaryInterface {
     timerName
     iconPreview
     timerDetail
+    timerNameRequired
+
     category
     categories
     categoryName
@@ -45,6 +47,7 @@ export interface DictionaryInterface {
     categoryNameExists
     categoryNameRequired
     categoryTimersWillBeLost
+
     settings
     general
     advanced
@@ -69,6 +72,7 @@ export interface DictionaryInterface {
     settingsImportFailure
     settingsSaveSuccess
     requiresAppReload
+    
     add
     save
     edit

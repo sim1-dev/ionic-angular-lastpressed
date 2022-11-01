@@ -5,8 +5,9 @@ export class Dictionary implements DictionaryInterface {
     timers = "Contatori"
     addTimer = "Aggiungi Contatore"
     timerName = "Nome Contatore"
-    iconPreview = "Anteprima Icona"
+    iconPreview = "Anteprima"
     timerDetail = "Dettagli Contatore"
+    timerNameRequired = "Il nome del contatore è obbligatorio"
 
     //Categories
     category = "Categoria"
@@ -58,7 +59,7 @@ export class Dictionary implements DictionaryInterface {
 
     //General statuses
     loading = "Caricamento..."
-    buttonPressed = "pulsante premuto!"
+    buttonPressed = "premuto!"
     deletePrompt = "Sei sicuro di voler eliminare"
     deletedSuccess = "eliminato con successo."
     savedSuccess = "salvato correttamente."

@@ -7,8 +7,9 @@ export class Dictionary implements DictionaryInterface {
     timers = "Timers"
     addTimer = "Add Timer"
     timerName = "Timer Name"
-    iconPreview = "Icon Preview"
+    iconPreview = "Preview"
     timerDetail = "Timer Detail"
+    timerNameRequired = "Timer name is required"
 
     //Categories
     category = "Category"
