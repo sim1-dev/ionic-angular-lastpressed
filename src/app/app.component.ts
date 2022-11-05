@@ -10,7 +10,7 @@ import { StorageService } from './services/storage.service';
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-  constructor(private storage: Storage, public storageService: StorageService, public langService: LanguageService) { 
+  constructor(private storage: Storage, public storageService: StorageService, public languageService: LanguageService) { 
     
   }
 
@@ -21,7 +21,7 @@ export class AppComponent {
     if(!await this.storage.get('settings'))
       await this.storageService.resetSettings()
 
-    this.langService.buildDictionary()
+    this.languageService.buildDictionary()
 
     SplashScreen.hide()
 

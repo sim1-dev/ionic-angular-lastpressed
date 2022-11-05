@@ -13,7 +13,7 @@ import { LanguageService } from 'src/app/services/language.service';
 export class CategoriesPage {
   loading: boolean = true
   categories: Category[]
-  constructor(private storageService: StorageService, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController, public langService: LanguageService) { }
+  constructor(private storageService: StorageService, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController, public languageService: LanguageService) { }
 
   async ionViewDidEnter() {
     await this.getCategories()
@@ -22,7 +22,7 @@ export class CategoriesPage {
   async getCategories() {
     this.loading = true
     let loading = await this.loadingController.create({
-      message: this.langService.dictionary.loading
+      message: this.languageService.dictionary.loading
     })
 
     loading.present()
@@ -52,16 +52,16 @@ export class CategoriesPage {
 
   async openDeleteCategoryDialog(category: Category) {
     const alert = await this.alertController.create({
-      header: this.langService.dictionary.alert,
-      message: this.langService.dictionary.deletePrompt +' '+category.name + '?' + this.langService.dictionary.categoryTimersWillBeLost,
+      header: this.languageService.dictionary.alert,
+      message: this.languageService.dictionary.deletePrompt +' '+category.name + '?' + this.languageService.dictionary.categoryTimersWillBeLost,
       buttons: [
-        this.langService.dictionary.cancel,
+        this.languageService.dictionary.cancel,
         {
-          text: this.langService.dictionary.delete,
+          text: this.languageService.dictionary.delete,
           handler: async () => {
             await this.storageService.deleteCategory(category.id)
             const toast = await this.toastController.create({
-              message: this.langService.dictionary.category+' '+ category.name +' ' + this.langService.dictionary.deletedSuccess,
+              message: this.languageService.dictionary.category+' '+ category.name +' ' + this.languageService.dictionary.deletedSuccess,
               color: 'success',
               duration: 1500,
               cssClass: 'tabs-bottom',

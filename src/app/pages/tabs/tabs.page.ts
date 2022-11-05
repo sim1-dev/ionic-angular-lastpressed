@@ -8,6 +8,6 @@ import { LanguageService } from 'src/app/services/language.service';
 })
 export class TabsPage {
 
-  constructor(public langService: LanguageService) {}
+  constructor(public languageService: LanguageService) {}
 
 }

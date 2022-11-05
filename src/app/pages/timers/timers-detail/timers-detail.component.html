@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button [text]="langService.dictionary.timerDetail"></ion-back-button>
+      <ion-back-button [text]="languageService.dictionary.timerDetail"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -10,27 +10,28 @@
   <ion-row>
     <ion-col>
       <div class="ion-text-center">
-        <h1>{{timer.name}}</h1>
+        <h1><ion-text style="vertical-align: middle;padding-right:8px"><ion-icon [name]="timer.icon" class="rainbow"></ion-icon></ion-text> <ion-text style="vertical-align: middle">{{timer.name}}</ion-text></h1>
       </div>
-      <div class="ion-text-center">
-        <ion-icon [name]="timer.icon" class="rainbow" style="font-size:12em"></ion-icon>
-      </div>
+      <ion-progress-bar [value]="formatActualSecondsForProgressBar(timer)"></ion-progress-bar>
+      <ion-text class="ion-text-center"><p>{{getTimerDuration(timer)}}</p></ion-text>
     </ion-col>
   </ion-row>
-  <ion-row class="bg-gray">
-    <ion-col>
-      <ion-text class="ion-text-center"><h2 class="rainbow">Timer Details</h2></ion-text>
-    </ion-col>
-  </ion-row>
+  <ion-grid class="bg-gray">
+    <ion-row>
+      <ion-col>
+        <ion-text class="ion-text-center"><h2 class="rainbow">{{languageService.dictionary.timerDetail}}</h2></ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 
 <ion-footer *ngIf="!loading">
   <ion-row class="ion-no-padding">
     <ion-col size="6" class="ion-no-padding">
-      <ion-button expand="full" color="warning" (click)="openModal('edit', category, timer)">{{langService.dictionary.edit}}</ion-button>
+      <ion-button expand="full" color="warning" (click)="openModal('edit', category, timer)">{{languageService.dictionary.edit}}</ion-button>
     </ion-col>
     <ion-col size="6" class="ion-no-padding">
-      <ion-button expand="full" color="danger" (click)="openDeleteTimerDialog(category, timer)">{{langService.dictionary.delete}}</ion-button>
+      <ion-button expand="full" color="danger" (click)="openDeleteTimerDialog(category, timer)">{{languageService.dictionary.delete}}</ion-button>
     </ion-col>
   </ion-row>
 </ion-footer>

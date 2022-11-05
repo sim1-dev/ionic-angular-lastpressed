@@ -19,7 +19,7 @@ export class TimersPage {
   now: Date = new Date()
   interval: any
 
-  constructor(private storageService: StorageService, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController, public timeService: TimeService, public langService: LanguageService) { }
+  constructor(private storageService: StorageService, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController, public timeService: TimeService, public languageService: LanguageService) { }
 
   async ionViewDidEnter() {
     
@@ -33,7 +33,7 @@ export class TimersPage {
   async getCategories() {
     this.loading = true
     let loading = await this.loadingController.create({
-      message: this.langService.dictionary.loading
+      message: this.languageService.dictionary.loading
     })
 
     loading.present()
@@ -64,7 +64,7 @@ export class TimersPage {
   async resetLastPressed(category: Category, timer: Timer) {
     this.storageService.resetTimer(category, timer)
     const toast = await this.toastController.create({
-      message: this.langService.dictionary.timer+' '+timer.name+' '+this.langService.dictionary.buttonPressed,
+      message: this.languageService.dictionary.timer+' '+timer.name+' '+this.languageService.dictionary.buttonPressed,
       color: 'success',
       duration: 2000,
       cssClass: 'tabs-bottom',

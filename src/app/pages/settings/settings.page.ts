@@ -15,7 +15,7 @@ export class SettingsPage {
   settings: Settings
   generalSaveButtonEnabled: boolean = false
 
-  constructor(private storageService: StorageService, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController, public langService: LanguageService) { }
+  constructor(private storageService: StorageService, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController, public languageService: LanguageService) { }
 
   async ionViewDidEnter() {
     await this.getSettings()
@@ -23,7 +23,7 @@ export class SettingsPage {
 
   async getSettings() {
     let loader = await this.loadingController.create({
-      message: this.langService.dictionary.loading
+      message: this.languageService.dictionary.loading
     })
 
     loader.present()
@@ -34,19 +34,19 @@ export class SettingsPage {
 
   async resetSettings() {
     const alert = await this.alertController.create({
-      header: this.langService.dictionary.alert,
-      message: this.langService.dictionary.resetSettingsPrompt,
+      header: this.languageService.dictionary.alert,
+      message: this.languageService.dictionary.resetSettingsPrompt,
       buttons: [
-        this.langService.dictionary.cancel,
+        this.languageService.dictionary.cancel,
         {
-          text: this.langService.dictionary.reset,
+          text: this.languageService.dictionary.reset,
           handler: async () => {
             this.loading = true
             await this.storageService.resetSettings()
             await this.getSettings()
             this.loading = false
             this.toastController.create({
-              message: this.langService.dictionary.settingsResetSuccess,
+              message: this.languageService.dictionary.settingsResetSuccess,
               color: 'success',
               duration: 2000,
               cssClass: 'tabs-bottom',
@@ -63,14 +63,14 @@ export class SettingsPage {
     let response = await this.storageService.exportSettings()
     if(response.result) {
       this.toastController.create({
-        message: this.langService.dictionary.settingsExportSuccess+' '+response.message,
+        message: this.languageService.dictionary.settingsExportSuccess+' '+response.message,
         color: 'success',
         duration: 3000,
         cssClass: 'tabs-bottom',
       }).then(toast => toast.present())
     } else {
       this.toastController.create({
-        message: this.langService.dictionary.settingsExportFailure+' '+response.message,
+        message: this.languageService.dictionary.settingsExportFailure+' '+response.message,
         color: 'danger',
         duration: 2000,
         cssClass: 'tabs-bottom',
@@ -80,15 +80,15 @@ export class SettingsPage {
 
   async importSettings() {
     const alert = await this.alertController.create({
-      header: this.langService.dictionary.alert,
-      message: this.langService.dictionary.importSettingsPrompt,
+      header: this.languageService.dictionary.alert,
+      message: this.languageService.dictionary.importSettingsPrompt,
       buttons: [
-        this.langService.dictionary.cancel,
+        this.languageService.dictionary.cancel,
         {
-          text: this.langService.dictionary.import,
+          text: this.languageService.dictionary.import,
           handler: async () => {
             let loader = await this.loadingController.create({
-              message: this.langService.dictionary.loading
+              message: this.languageService.dictionary.loading
             })
         
             loader.present()
@@ -98,14 +98,14 @@ export class SettingsPage {
             loader.dismiss()
             if(response.result) {
               this.toastController.create({
-                message: this.langService.dictionary.settingsImportSuccess,
+                message: this.languageService.dictionary.settingsImportSuccess,
                 color: 'success',
                 duration: 1500,
                 cssClass: 'tabs-bottom',
               }).then(toast => toast.present())
             } else {
               this.toastController.create({
-                message: this.langService.dictionary.settingsImportFailure+' ' + response.message,
+                message: this.languageService.dictionary.settingsImportFailure+' ' + response.message,
                 color: 'danger',
                 duration: 2000,
                 cssClass: 'tabs-bottom',
@@ -126,7 +126,7 @@ export class SettingsPage {
   async saveGeneral() {
     this.loading = true
     let loader = await this.loadingController.create({
-      message: this.langService.dictionary.saving
+      message: this.languageService.dictionary.saving
     })
     loader.present()
     this.generalSaveButtonEnabled = false
@@ -134,7 +134,7 @@ export class SettingsPage {
     loader.dismiss()
     this.loading = false
     this.toastController.create({
-      message: this.langService.dictionary.settingsSaveSuccess,
+      message: this.languageService.dictionary.settingsSaveSuccess,
       color: 'success',
       duration: 2000,
       cssClass: 'tabs-bottom',

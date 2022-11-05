@@ -24,7 +24,7 @@ export class TimersDetailComponent {
   now: Date = new Date()
   interval: any
 
-  constructor(private route: ActivatedRoute, public storageService: StorageService, public loadingController: LoadingController, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public timeService: TimeService, public router: Router, public langService: LanguageService) { }
+  constructor(private route: ActivatedRoute, public storageService: StorageService, public loadingController: LoadingController, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public timeService: TimeService, public router: Router, public languageService: LanguageService) { }
 
   async ionViewDidEnter() {
     this.subscriptions.add(
@@ -43,7 +43,7 @@ export class TimersDetailComponent {
   async getTimerDetails() {
     this.loading = true
     let loading = await this.loadingController.create({
-      message: this.langService.dictionary.loading
+      message: this.languageService.dictionary.loading
     })
 
     loading.present()
@@ -73,16 +73,16 @@ export class TimersDetailComponent {
 
   async openDeleteTimerDialog(category: Category, timer: Timer) {
     const alert = await this.alertController.create({
-      header: this.langService.dictionary.alert,
-      message: this.langService.dictionary.deletePrompt+' '+this.langService.dictionary.timer+' '+timer.name+'?',
+      header: this.languageService.dictionary.alert,
+      message: this.languageService.dictionary.deletePrompt+' '+this.languageService.dictionary.timer+' '+timer.name+'?',
       buttons: [
-        this.langService.dictionary.cancel,
+        this.languageService.dictionary.cancel,
         {
-          text: this.langService.dictionary.delete,
+          text: this.languageService.dictionary.delete,
           handler: async () => {
             await this.storageService.deleteTimer(category, timer)
             const toast = await this.toastController.create({
-              message: this.langService.dictionary.timer+' '+timer.name+' '+this.langService.dictionary.deletedSuccess,
+              message: this.languageService.dictionary.timer+' '+timer.name+' '+this.languageService.dictionary.deletedSuccess,
               color: 'success',
               duration: 2000,
               cssClass: 'tabs-bottom',
@@ -97,10 +97,16 @@ export class TimersDetailComponent {
     await alert.present()
   }
 
-  getTimerDuration(timer: Timer) {
+  getTimerDuration(timer: Timer): string {
     let lastPressStamp = timer.lastPressed ? new Date(timer.lastPressed).getTime() : 0
     let timestamp = this.now.getTime() - lastPressStamp
     return this.timeService.getExtendedSecondsToString(timestamp / 1000)
+  }
+
+  formatActualSecondsForProgressBar(timer: Timer): number {
+    let lastPressStamp = timer.lastPressed ? new Date(timer.lastPressed).getTime() : 0
+    let timestamp = this.now.getTime() - lastPressStamp
+    return this.timeService.getActualSeconds(timestamp / 1000) / 60
   }
 
   ionViewDidLeave() {

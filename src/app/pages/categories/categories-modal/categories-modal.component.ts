@@ -19,7 +19,7 @@ export class CategoriesModalComponent implements OnInit {
 
   categoryForm: FormGroup
 
-  constructor(public modalController: ModalController, public formBuilder: FormBuilder, public storageService: StorageService, public langService: LanguageService) {
+  constructor(public modalController: ModalController, public formBuilder: FormBuilder, public storageService: StorageService, public languageService: LanguageService) {
   }
 
   ngOnInit() {

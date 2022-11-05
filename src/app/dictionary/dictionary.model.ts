@@ -1,29 +1,26 @@
-import * as DictionaryIT from './dictionaryIT';
-import * as DictionaryEN from './dictionaryEN';
+import * as IT from './IT';
+import * as EN from './EN';
 import { StorageService } from '../services/storage.service';
 
 export class Dictionary {
-    userLanguage: string
+    appLanguage: string
     dictionary: DictionaryInterface
 
     constructor(public storageService: StorageService) {
-        this.dictionary = new DictionaryEN.Dictionary() 
+        this.dictionary = new EN.Dictionary() 
     }
 
     async build() {
         let settings = await this.storageService.getSettings()
         
-        if (settings.language)
-            this.userLanguage = settings.language
-        else
-            this.userLanguage = 'en'
+        this.appLanguage = settings?.language ? settings.language : 'en'
 
-        switch (this.userLanguage) {
+        switch (this.appLanguage) {
             case 'it':
-                this.dictionary = new DictionaryIT.Dictionary()
+                this.dictionary = new IT.Dictionary()
                 break
             default:
-                this.dictionary = new DictionaryEN.Dictionary()
+                this.dictionary = new EN.Dictionary()
                 break
         }
         return this.dictionary
@@ -72,7 +69,7 @@ export interface DictionaryInterface {
     settingsImportFailure
     settingsSaveSuccess
     requiresAppReload
-    
+
     add
     save
     edit

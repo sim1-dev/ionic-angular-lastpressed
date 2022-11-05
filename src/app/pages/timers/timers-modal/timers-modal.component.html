@@ -1,6 +1,6 @@
 <ion-header class="ion-padding">
   <ion-toolbar>
-    <ion-title>{{langService.dictionary.addTimer}}</ion-title>
+    <ion-title>{{languageService.dictionary.addTimer}}</ion-title>
     <ion-button slot="end" color="danger" (click)="close()"><ion-icon name="close"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
@@ -8,12 +8,12 @@
 <ion-content class="ion-padding">
   <form [formGroup]="timerForm" (ngSubmit)="saveTimer()">
     <ion-item>
-      <ion-label position="stacked">{{langService.dictionary.timerName}}</ion-label>
+      <ion-label position="stacked">{{languageService.dictionary.timerName}}</ion-label>
       <ion-input formControlName="name" type="text" required></ion-input>
     </ion-item>
     <ion-text color="danger" *ngIf="timerForm.get('name').errors && timerForm.get('name').touched">
       <h6>
-        {{timerForm.get('name').errors?.required ? langService.dictionary.timerNameRequired : ''}}
+        {{timerForm.get('name').errors?.required ? languageService.dictionary.timerNameRequired : ''}}
       </h6>
     </ion-text>
     <ion-select placeholder="Select icon" formControlName="icon">
@@ -32,13 +32,13 @@
     <ion-row class="ion-padding">
       <ion-col>
         <div class="ion-text-center">
-          <h1 class="rainbow">{{langService.dictionary.iconPreview}}</h1>
+          <h1 class="rainbow">{{languageService.dictionary.iconPreview}}</h1>
         </div>
         <div class="ion-text-center">
           <ion-icon [name]="timerForm.controls.icon.value" class="rainbow" style="font-size:12em"></ion-icon>
         </div>
       </ion-col>
     </ion-row>
-    <ion-button class="ion-margin-top" expand="full" type="submit" [disabled]="timerForm.invalid">{{action == 'add' ? langService.dictionary.add : langService.dictionary.edit}}</ion-button>
+    <ion-button class="ion-margin-top" expand="full" type="submit" [disabled]="timerForm.invalid">{{action == 'add' ? languageService.dictionary.add : languageService.dictionary.edit}}</ion-button>
   </form>
 </ion-content>

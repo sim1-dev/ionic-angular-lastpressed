@@ -1,23 +1,23 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{langService.dictionary.settings}}</ion-title>
+    <ion-title>{{languageService.dictionary.settings}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding" *ngIf="!loading">
-  <ion-text><h4>{{langService.dictionary.general}}</h4></ion-text>
+  <ion-text><h4>{{languageService.dictionary.general}}</h4></ion-text>
   <ion-list>
     <ion-item>
-      <ion-label>{{langService.dictionary.theme}}</ion-label>
+      <ion-label>{{languageService.dictionary.theme}}</ion-label>
       <ion-select [(ngModel)]="settings.theme" (ionChange)="enableGeneralSaveButton()">
-        <ion-select-option value="light">{{langService.dictionary.light}}</ion-select-option>
-        <ion-select-option value="dark">{{langService.dictionary.dark}}</ion-select-option>
+        <ion-select-option value="light">{{languageService.dictionary.light}}</ion-select-option>
+        <ion-select-option value="dark">{{languageService.dictionary.dark}}</ion-select-option>
       </ion-select>
     </ion-item>
     <ion-item>
       <ion-label>
-        <h2>{{langService.dictionary.language}}</h2>
-        <p>{{langService.dictionary.requiresAppReload}}</p>
+        <h2>{{languageService.dictionary.language}}</h2>
+        <p>{{languageService.dictionary.requiresAppReload}}</p>
       </ion-label>
       <ion-select [(ngModel)]="settings.language" (ionChange)="enableGeneralSaveButton()">
         <ion-select-option value="en">English</ion-select-option>
@@ -26,35 +26,35 @@
     </ion-item>
     <ion-item>
       <ion-label>
-        <h2>{{langService.dictionary.removeAds}}</h2>
-        <p>{{langService.dictionary.removeAdsDescription}}</p>
+        <h2>{{languageService.dictionary.removeAds}}</h2>
+        <p>{{languageService.dictionary.removeAdsDescription}}</p>
       </ion-label>
       <ion-button color="warning" (click)="removeAds()">0,99 <ion-icon name="logo-euro"></ion-icon></ion-button>
     </ion-item>
-    <ion-button *ngIf="generalSaveButtonEnabled" expand="full" color="primary" (click)="saveGeneral()">{{langService.dictionary.save}} {{langService.dictionary.settings}}</ion-button>
+    <ion-button *ngIf="generalSaveButtonEnabled" expand="full" color="primary" (click)="saveGeneral()">{{languageService.dictionary.save}} {{languageService.dictionary.settings}}</ion-button>
   </ion-list>
-  <ion-text><h4>{{langService.dictionary.advanced}}</h4></ion-text>
+  <ion-text><h4>{{languageService.dictionary.advanced}}</h4></ion-text>
   <ion-list>
     <ion-item>
       <ion-label>
-        <h2>{{langService.dictionary.exportSettings}} JSON</h2>
-        <p>{{langService.dictionary.exportSettingsDescription}}</p>
+        <h2>{{languageService.dictionary.exportSettings}} JSON</h2>
+        <p>{{languageService.dictionary.exportSettingsDescription}}</p>
       </ion-label>
-      <ion-button color="primary" (click)="exportSettings()">{{langService.dictionary.export}} <ion-icon name="download"></ion-icon></ion-button>
+      <ion-button color="primary" (click)="exportSettings()">{{languageService.dictionary.export}} <ion-icon name="download"></ion-icon></ion-button>
     </ion-item>
     <ion-item>
       <ion-label>
-        <h2>{{langService.dictionary.importSettings}} JSON</h2>
-        <p>{{langService.dictionary.importSettingsDescription}}</p>
+        <h2>{{languageService.dictionary.importSettings}} JSON</h2>
+        <p>{{languageService.dictionary.importSettingsDescription}}</p>
       </ion-label>
-      <ion-button slot="end" color="success" (click)="importSettings()">{{langService.dictionary.import}} <ion-icon name="cloud-upload"></ion-icon></ion-button>
+      <ion-button slot="end" color="success" (click)="importSettings()">{{languageService.dictionary.import}} <ion-icon name="cloud-upload"></ion-icon></ion-button>
     </ion-item>
     <ion-item>
       <ion-label>
-        <h2>{{langService.dictionary.resetSettings}}</h2>
-        <p>{{langService.dictionary.resetSettingsDescription}}</p>
+        <h2>{{languageService.dictionary.resetSettings}}</h2>
+        <p>{{languageService.dictionary.resetSettingsDescription}}</p>
       </ion-label>
-      <ion-button color="danger" (click)="resetSettings()">{{langService.dictionary.reset}} <ion-icon name="refresh"></ion-icon></ion-button>
+      <ion-button color="danger" (click)="resetSettings()">{{languageService.dictionary.reset}} <ion-icon name="refresh"></ion-icon></ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -37,4 +37,8 @@ export class TimeService {
     return fullText !== '' ? fullText + 'ago' : fullText +'now'
   }
 
+  getActualSeconds(seconds: number): number {
+    return Math.round((((seconds % 31536000) % 86400) % 3600) % 60)
+  }
+
 }
