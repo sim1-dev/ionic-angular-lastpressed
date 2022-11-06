@@ -5,7 +5,7 @@
 </ion-header>
 
 <ion-content class="ion-padding" *ngIf="!loading">
-  <ion-text><h4>{{languageService.dictionary.general}}</h4></ion-text>
+  <ion-text><h4 class="rainbow">{{languageService.dictionary.general}}</h4></ion-text>
   <ion-list>
     <ion-item>
       <ion-label>{{languageService.dictionary.theme}}</ion-label>
@@ -33,7 +33,7 @@
     </ion-item>
     <ion-button *ngIf="generalSaveButtonEnabled" expand="full" color="primary" (click)="saveGeneral()">{{languageService.dictionary.save}} {{languageService.dictionary.settings}}</ion-button>
   </ion-list>
-  <ion-text><h4>{{languageService.dictionary.advanced}}</h4></ion-text>
+  <ion-text><h4 class="rainbow">{{languageService.dictionary.advanced}}</h4></ion-text>
   <ion-list>
     <ion-item>
       <ion-label>

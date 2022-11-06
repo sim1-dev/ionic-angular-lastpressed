@@ -79,6 +79,7 @@ export class TimersDetailComponent {
         this.languageService.dictionary.cancel,
         {
           text: this.languageService.dictionary.delete,
+          cssClass: "text-danger",
           handler: async () => {
             await this.storageService.deleteTimer(category, timer)
             const toast = await this.toastController.create({

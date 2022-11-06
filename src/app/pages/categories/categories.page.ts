@@ -58,6 +58,7 @@ export class CategoriesPage {
         this.languageService.dictionary.cancel,
         {
           text: this.languageService.dictionary.delete,
+          cssClass: "text-danger",
           handler: async () => {
             await this.storageService.deleteCategory(category.id)
             const toast = await this.toastController.create({

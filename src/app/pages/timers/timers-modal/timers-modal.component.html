@@ -5,7 +5,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
+<ion-content class="ion-padding" *ngIf="icons">
   <form [formGroup]="timerForm" (ngSubmit)="saveTimer()">
     <ion-item>
       <ion-label position="stacked">{{languageService.dictionary.timerName}}</ion-label>
@@ -16,19 +16,12 @@
         {{timerForm.get('name').errors?.required ? languageService.dictionary.timerNameRequired : ''}}
       </h6>
     </ion-text>
-    <ion-select placeholder="Select icon" formControlName="icon">
-      <ion-select-option value="alarm" selected>Alarm clock</ion-select-option>
-      <ion-select-option value="medical">Medicine</ion-select-option>
-      <ion-select-option value="paw">Paw</ion-select-option>
-      <ion-select-option value="cafe">Coffee</ion-select-option>
-      <ion-select-option value="barbell">Gym barbell</ion-select-option>
-      <ion-select-option value="book">Book</ion-select-option>
-      <ion-select-option value="leaf">Leaf</ion-select-option>
-      <ion-select-option value="footsteps">Footsteps</ion-select-option>
-      <ion-select-option value="water">Water drop</ion-select-option>
-      <ion-select-option value="card">Credit card</ion-select-option>
-      <ion-select-option value="wine">Wine</ion-select-option>
-    </ion-select>
+    <ion-item>
+      <ion-label class="rainbow">{{languageService.dictionary.icon}}</ion-label>
+      <ion-select placeholder="Select icon" formControlName="icon">
+        <ion-select-option *ngFor="let icon of icons" [value]="icon.name">{{icon.label}}</ion-select-option>
+      </ion-select>
+    </ion-item>
     <ion-row class="ion-padding">
       <ion-col>
         <div class="ion-text-center">

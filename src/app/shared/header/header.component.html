@@ -3,8 +3,8 @@
     <ion-title>
       {{pageTitle}}
     </ion-title>
-    <ion-title slot="end">
-      v1.0.0
+    <ion-title slot="end" *ngIf="settings">
+      <h6>{{settings.accountType && settings.accountType === AccountType.PREMIUM ? languageService.dictionary.premium : languageService.dictionary.free }}</h6>
     </ion-title>
   </ion-toolbar>
 </ion-header>

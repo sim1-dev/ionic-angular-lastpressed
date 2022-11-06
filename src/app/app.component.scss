@@ -53,6 +53,8 @@ ios .tabs-bottom {
   .ion-accordion-toggle-icon, 
   ion-accordion > ion-item > ion-label, 
   .item-input ion-label,
+  .alert-button-inner .sc-ion-alert-md
+  .alert-head h2,
   .rainbow {
     color:var(--ion-color-primary) !important;
     background-image: var(--ion-color-gradient) !important;
@@ -95,12 +97,42 @@ ios .tabs-bottom {
   ion-header,
   ion-toolbar,
   app-header {
+    background: var(--ion-color-darker) !important;
     --background: var(--ion-color-darker) !important;
   }
-
-  .bg-gray {
-    background: var(--ion-item-background, var(--ion-background-color, #fff)) !important;
+ 
 }
 
- 
+// General Theme Variables
+.bg-gray {
+  background: var(--ion-item-background, var(--ion-background-color, #fff)) !important;
+}
+
+.text-danger {
+  color: var(--ion-color-danger) !important;
+}
+
+.opacity-50 {
+  opacity: .5 !important;
+}
+
+
+// Select Text Wrap Fix
+#ForRadioOptions
+.alert-radio-label.sc-ion-alert-md,
+.alert-radio-label.sc-ion-alert-ios {
+   white-space: normal;
+}
+.alert-tappable.alert-radio {
+   height: auto;
+   contain: content;
+}
+#ForCheckbox
+.alert-checkbox-label.sc-ion-alert-md,
+.alert-checkbox-label.sc-ion-alert-ios {
+   white-space: normal;
+}
+.alert-tappable.alert-checkbox {
+   height: auto;
+   contain: content;
 }

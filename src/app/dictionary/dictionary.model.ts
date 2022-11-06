@@ -28,6 +28,43 @@ export class Dictionary {
 }
 
 export interface DictionaryInterface {
+
+    // Misc
+    name
+    icon
+
+    // Account Types
+    free
+    premium
+
+    // Icon Types
+    alarm
+    medical
+    paw
+    cafe
+    barbell
+    book
+    leaf
+    footsteps
+    water
+    card
+    wine
+
+    // Time
+    now
+    years
+    days
+    hours
+    minutes
+    seconds
+    ago
+    compactYears
+    compactDays
+    compactHours
+    compactMinutes
+    compactSeconds
+
+    // Timers
     timer
     timers
     addTimer
@@ -36,6 +73,7 @@ export interface DictionaryInterface {
     timerDetail
     timerNameRequired
 
+    // Categories
     category
     categories
     categoryName
@@ -45,6 +83,7 @@ export interface DictionaryInterface {
     categoryNameRequired
     categoryTimersWillBeLost
 
+    // Settings
     settings
     general
     advanced
@@ -70,6 +109,7 @@ export interface DictionaryInterface {
     settingsSaveSuccess
     requiresAppReload
 
+    // Actions
     add
     save
     edit
@@ -78,11 +118,13 @@ export interface DictionaryInterface {
     import
     export: string // error without type definition xD
     cancel
+
+    // General statuses
+    loading
     buttonPressed
     deletePrompt
     deletedSuccess
     savedSuccess
-    loading
     alert
     saving
 }

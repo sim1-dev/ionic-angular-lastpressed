@@ -15,13 +15,13 @@
   <ion-accordion-group [multiple]="true" value="acc0">
     <ion-accordion toggleIcon="caret-down" *ngFor="let category of categories; let i = index" [value]="'acc'+i">
       <ion-item slot="header">
-        <ion-label>{{category.name}}</ion-label>
+        <ion-label>{{category.name === 'General' ? languageService.dictionary.general : category.name}}</ion-label>
       </ion-item>
       <ion-list slot="content" class="ion-padding">
         <ion-item *ngFor="let timer of category.timers">
           <ion-icon [name]="timer.icon" class="timerIcon"></ion-icon>
           <ion-label>{{timer.name}}</ion-label>
-          <ion-text color="medium">{{getTimerDuration(timer)}}</ion-text>
+          <ion-text color="medium opacity-50">{{getTimerDuration(timer)}}</ion-text>
           <ion-icon slot="end" name="refresh-circle" color="success" (click)="resetLastPressed(category, timer)"></ion-icon>
           <ion-icon slot="end" name="eye" color="secondary" [routerLink]="['detail', category.id, timer.id]"></ion-icon>
           <!-- <ion-icon slot="end" name="pencil" color="secondary" (click)="openModal('edit', category, timer)"></ion-icon>

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Directory, Encoding, Filesystem } from '@capacitor/filesystem';
 import { Storage } from '@ionic/storage-angular';
+import { AccountType } from '../models/account-types.model';
 import { Category } from '../models/category.model';
 import { Settings } from '../models/settings.model';
 import { Timer } from '../models/timer.model';
@@ -145,6 +146,7 @@ export class StorageService {
 
   async resetSettings() {
     let newSettings = new Settings()
+    newSettings.accountType = AccountType.FREE
     newSettings.theme = await this.deviceService.getTheme()
     newSettings.language = await this.deviceService.getLanguage()
     return this.storage.set('settings',newSettings)

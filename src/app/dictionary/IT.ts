@@ -1,6 +1,43 @@
 import { DictionaryInterface } from './dictionary.model';
 
 export class Dictionary implements DictionaryInterface {
+
+    // Misc
+    name = "Nome"
+    icon = "Icona"
+
+    // Account Types
+    free = "GRATIS"
+    premium = "PRO"
+
+    // Icon Types
+    alarm = "Sveglia"
+    medical = "Medicina"
+    paw = "Zampa"
+    cafe = "Caffè"
+    barbell = "Bilanciere"
+    book = "Libro"
+    leaf = "Foglia"
+    footsteps = "Orme"
+    water = "Goccia d'acqua"
+    card = "Carta di credito"
+    wine = "Vino"
+
+    // Time
+    now = "adesso"
+    years = "anni"
+    days = "giorni"
+    hours = "ore"
+    minutes = "minuti"
+    seconds = "secondi"
+    ago = "fa"
+    compactYears = "a"
+    compactDays = "g"
+    compactHours = "o"
+    compactMinutes = "m"
+    compactSeconds = "s"
+
+    // Timers
     timer = "Contatore"
     timers = "Contatori"
     addTimer = "Aggiungi Contatore"
@@ -9,7 +46,7 @@ export class Dictionary implements DictionaryInterface {
     timerDetail = "Dettagli Contatore"
     timerNameRequired = "Il nome del contatore è obbligatorio"
 
-    //Categories
+    // Categories
     category = "Categoria"
     categories = "Categorie"
     categoryName = "Nome Categoria"
@@ -21,7 +58,7 @@ export class Dictionary implements DictionaryInterface {
     categoryNameRequired = "Il nome della categoria è obbligatorio"
     categoryTimersWillBeLost = "Anche tutti i suoi contatori spariranno."
 
-    //Settings
+    // Settings
     settings = "Impostazioni"
     general = "Generale"
     advanced = "Avanzate"
@@ -47,7 +84,7 @@ export class Dictionary implements DictionaryInterface {
     settingsSaveSuccess = "Impostazioni salvate correttamente"
     requiresAppReload = "Richiede una ricarica dell'app"
 
-    //Actions
+    // Actions
     save = "Salva"
     add = "Aggiungi"
     edit = "Modifica"
@@ -57,7 +94,7 @@ export class Dictionary implements DictionaryInterface {
     export = "Esporta"
     cancel = "Annulla"
 
-    //General statuses
+    // General statuses
     loading = "Caricamento..."
     buttonPressed = "premuto!"
     deletePrompt = "Sei sicuro di voler eliminare"

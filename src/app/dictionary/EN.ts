@@ -2,7 +2,42 @@ import { DictionaryInterface } from './dictionary.model';
 
 export class Dictionary implements DictionaryInterface {
 
-    //Timers
+    // Misc
+    name = "Name"
+    icon = "Icon"
+
+    // Account Types
+    free = "FREE"
+    premium = "PRO"
+
+    // Icon Types
+    alarm = "Alarm clock"
+    medical = "Medicine"
+    paw = "Paw"
+    cafe = "Coffee"
+    barbell = "Gym barbell"
+    book = "Book"
+    leaf = "Leaf"
+    footsteps = "Footsteps"
+    water = "Water drop"
+    card = "Credit card"
+    wine = "Wine"
+
+    // Time
+    now = "now"
+    years = "years"
+    days = "days"
+    hours = "hours"
+    minutes = "minutes"
+    seconds = "seconds"
+    ago = "ago"
+    compactYears = "y"
+    compactDays = "d"
+    compactHours = "h"
+    compactMinutes = "m"
+    compactSeconds = "s"
+
+    // Timers
     timer = "Timer"
     timers = "Timers"
     addTimer = "Add Timer"
@@ -11,7 +46,7 @@ export class Dictionary implements DictionaryInterface {
     timerDetail = "Timer Detail"
     timerNameRequired = "Timer name is required"
 
-    //Categories
+    // Categories
     category = "Category"
     categories = "Categories"
     categoryName = "Category Name"
@@ -23,7 +58,7 @@ export class Dictionary implements DictionaryInterface {
     categoryNameRequired = "Category name is required"
     categoryTimersWillBeLost = "All category timers will be lost aswell."
 
-    //Settings
+    // Settings
     settings = "Settings"
     general = "General"
     advanced = "Advanced"
@@ -49,7 +84,7 @@ export class Dictionary implements DictionaryInterface {
     settingsSaveSuccess = "Settings saved successfully"
     requiresAppReload = "App reload required"
 
-    //Actions
+    // Actions
     save = "Save"
     add = "Add"
     edit = "Edit"
@@ -59,7 +94,7 @@ export class Dictionary implements DictionaryInterface {
     export = "Export"
     cancel = "Cancel"
 
-    //General statuses
+    // General statuses
     loading = "Loading..."
     deletePrompt = "Are you sure you want to delete"
     deletedSuccess = "deleted successfully."
