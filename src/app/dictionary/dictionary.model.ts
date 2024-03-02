@@ -11,7 +11,7 @@ export class Dictionary {
     }
 
     async build() {
-        let settings = await this.storageService.getSettings()
+        let settings = await this.storageService.get()
         
         this.appLanguage = settings?.language ? settings.language : 'en'
 
@@ -93,17 +93,17 @@ export interface DictionaryInterface {
     language
     removeAds
     removeAdsDescription
-    importSettings
-    importSettingsDescription
-    exportSettings
-    exportSettingsDescription
-    resetSettings
-    resetSettingsDescription
-    resetSettingsPrompt
+    import
+    importDescription
+    export
+    exportDescription
+    reset
+    resetDescription
+    resetPrompt
     settingsResetSuccess
     settingsExportSuccess
     settingsExportFailure
-    importSettingsPrompt
+    importPrompt
     settingsImportSuccess
     settingsImportFailure
     settingsSaveSuccess

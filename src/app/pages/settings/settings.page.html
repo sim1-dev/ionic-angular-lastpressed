@@ -37,24 +37,24 @@
   <ion-list>
     <ion-item>
       <ion-label>
-        <h2>{{languageService.dictionary.exportSettings}} JSON</h2>
-        <p>{{languageService.dictionary.exportSettingsDescription}}</p>
+        <h2>{{languageService.dictionary.export}} JSON</h2>
+        <p>{{languageService.dictionary.exportDescription}}</p>
       </ion-label>
-      <ion-button color="primary" (click)="exportSettings()">{{languageService.dictionary.export}} <ion-icon name="download"></ion-icon></ion-button>
+      <ion-button color="primary" (click)="export()">{{languageService.dictionary.export}} <ion-icon name="download"></ion-icon></ion-button>
     </ion-item>
     <ion-item>
       <ion-label>
-        <h2>{{languageService.dictionary.importSettings}} JSON</h2>
-        <p>{{languageService.dictionary.importSettingsDescription}}</p>
+        <h2>{{languageService.dictionary.import}} JSON</h2>
+        <p>{{languageService.dictionary.importDescription}}</p>
       </ion-label>
-      <ion-button slot="end" color="success" (click)="importSettings()">{{languageService.dictionary.import}} <ion-icon name="cloud-upload"></ion-icon></ion-button>
+      <ion-button slot="end" color="success" (click)="import()">{{languageService.dictionary.import}} <ion-icon name="cloud-upload"></ion-icon></ion-button>
     </ion-item>
     <ion-item>
       <ion-label>
-        <h2>{{languageService.dictionary.resetSettings}}</h2>
-        <p>{{languageService.dictionary.resetSettingsDescription}}</p>
+        <h2>{{languageService.dictionary.reset}}</h2>
+        <p>{{languageService.dictionary.resetDescription}}</p>
       </ion-label>
-      <ion-button color="danger" (click)="resetSettings()">{{languageService.dictionary.reset}} <ion-icon name="refresh"></ion-icon></ion-button>
+      <ion-button color="danger" (click)="reset()">{{languageService.dictionary.reset}} <ion-icon name="refresh"></ion-icon></ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

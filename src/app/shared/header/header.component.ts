@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
   constructor(public storageService: StorageService, public languageService: LanguageService) { }
 
   async ngOnInit() {
-    this.settings = await this.storageService.getSettings()
+    this.settings = await this.storageService.get()
   }
 
 }

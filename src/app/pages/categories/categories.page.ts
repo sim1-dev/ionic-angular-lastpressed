@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { Category } from 'src/app/models/category.model';
 import { AlertController, LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { CategoriesModalComponent } from './categories-modal/categories-modal.component';
-import { StorageService } from 'src/app/services/storage.service';
 import { LanguageService } from 'src/app/services/language.service';
+import { CategoryService } from 'src/app/services/category.service';
 
 @Component({
   selector: 'app-categories',
@@ -13,7 +13,7 @@ import { LanguageService } from 'src/app/services/language.service';
 export class CategoriesPage {
   loading: boolean = true
   categories: Category[]
-  constructor(private storageService: StorageService, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController, public languageService: LanguageService) { }
+  constructor(private categoryService: CategoryService, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController, public languageService: LanguageService) { }
 
   async ionViewDidEnter() {
     await this.getCategories()
@@ -27,7 +27,7 @@ export class CategoriesPage {
 
     loading.present()
 
-    this.categories = await this.storageService.getCategories()
+    this.categories = await this.categoryService.get()
 
     loading.dismiss()
     this.loading = false
@@ -60,7 +60,7 @@ export class CategoriesPage {
           text: this.languageService.dictionary.delete,
           cssClass: "text-danger",
           handler: async () => {
-            await this.storageService.deleteCategory(category.id)
+            await this.categoryService.delete(category.id)
             const toast = await this.toastController.create({
               message: this.languageService.dictionary.category+' '+ category.name +' ' + this.languageService.dictionary.deletedSuccess,
               color: 'success',

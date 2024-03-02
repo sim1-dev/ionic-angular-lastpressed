@@ -13,95 +13,95 @@ ios .tabs-bottom {
 
 
 //Dark Theme Gradient
-@media (prefers-color-scheme: dark) {
+// @media (prefers-color-scheme: dark) {
 
-  // Gradient Border Bottom
-  ion-header::after {
-    content:" " !important;
-    width:100% !important;
-    height:3px !important;
-    display:block !important;
-    background: var(--ion-color-gradient) !important;
-  }
+//   // Gradient Border Bottom
+//   ion-header::after {
+//     content:" " !important;
+//     width:100% !important;
+//     height:3px !important;
+//     display:block !important;
+//     background: var(--ion-color-gradient) !important;
+//   }
 
-  // Gradient Border Top
-  ion-tab-bar {
-    border-width: 3px 0 0 0 !important;
-    border-style: solid !important;
-    border-image:var(--ion-color-gradient) 1% round !important;
-  }
+//   // Gradient Border Top
+//   ion-tab-bar {
+//     border-width: 3px 0 0 0 !important;
+//     border-style: solid !important;
+//     border-image:var(--ion-color-gradient) 1% round !important;
+//   }
 
-  // Gradient not selected icons
-  ion-tab-bar ion-tab-button ion-label, 
-  ion-tab-bar ion-tab-button ion-icon {
-    color:var(--ion-color-primary) !important;
-    background-image: var(--ion-color-gradient) !important;
-    fill: url(#mainGradient) !important; //SVG Gradient Fill
-    background-size: 100% !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important; 
-    -moz-background-clip: text !important;
-    -moz-text-fill-color: transparent !important;
-    opacity: .4 !important;
-  }
+//   // Gradient not selected icons
+//   ion-tab-bar ion-tab-button ion-label, 
+//   ion-tab-bar ion-tab-button ion-icon {
+//     color:var(--ion-color-primary) !important;
+//     background-image: var(--ion-color-gradient) !important;
+//     fill: url(#mainGradient) !important; //SVG Gradient Fill
+//     background-size: 100% !important;
+//     -webkit-background-clip: text !important;
+//     -webkit-text-fill-color: transparent !important; 
+//     -moz-background-clip: text !important;
+//     -moz-text-fill-color: transparent !important;
+//     opacity: .4 !important;
+//   }
 
-  // Gradient Text, Icons
-  ion-title, 
-  ion-tab-bar ion-tab-button.tab-selected ion-label, 
-  ion-tab-bar ion-tab-button.tab-selected ion-icon, 
-  .timerIcon, 
-  .ion-accordion-toggle-icon, 
-  ion-accordion > ion-item > ion-label, 
-  .item-input ion-label,
-  .alert-button-inner .sc-ion-alert-md
-  .alert-head h2,
-  .rainbow {
-    color:var(--ion-color-primary) !important;
-    background-image: var(--ion-color-gradient) !important;
-    fill: url(#mainGradient) !important; //SVG Gradient Fill
-    background-size: 100% !important;
-    -webkit-background-clip: text !important;
-    -webkit-text-fill-color: transparent !important; 
-    -moz-background-clip: text !important;
-    -moz-text-fill-color: transparent !important;
-    opacity: 1 !important;
-  }
+//   // Gradient Text, Icons
+//   ion-title, 
+//   ion-tab-bar ion-tab-button.tab-selected ion-label, 
+//   ion-tab-bar ion-tab-button.tab-selected ion-icon, 
+//   .timerIcon, 
+//   .ion-accordion-toggle-icon, 
+//   ion-accordion > ion-item > ion-label, 
+//   .item-input ion-label,
+//   .alert-button-inner .sc-ion-alert-md
+//   .alert-head h2,
+//   .rainbow {
+//     color:var(--ion-color-primary) !important;
+//     background-image: var(--ion-color-gradient) !important;
+//     fill: url(#mainGradient) !important; //SVG Gradient Fill
+//     background-size: 100% !important;
+//     -webkit-background-clip: text !important;
+//     -webkit-text-fill-color: transparent !important; 
+//     -moz-background-clip: text !important;
+//     -moz-text-fill-color: transparent !important;
+//     opacity: 1 !important;
+//   }
 
-  // //Gradient background only
+//   // //Gradient background only
 
-  // ion-tab-bar ion-tab-button ion-icon {
-  //   display: initial !important;
-  // }
+//   // ion-tab-bar ion-tab-button ion-icon {
+//   //   display: initial !important;
+//   // }
 
-  ion-progress-bar::part(track) {
-    background: var(--ion-color-gradient) !important;
-    opacity: .2 !important;
-  }
+//   ion-progress-bar::part(track) {
+//     background: var(--ion-color-gradient) !important;
+//     opacity: .2 !important;
+//   }
 
-  // Gradient Background Color + Hover
-  ion-button,
-  ion-progress-bar::part(progress) {
-    background: var(--ion-color-gradient) !important;
-    --background: var(--ion-color-gradient) !important;
-    -webkit-transition: all 0.2s linear !important;
-      -moz-transition: all 0.2s linear !important;
-        -o-transition: all 0.2s linear !important;
-          transition: all 0.2s linear !important;
-  }ion-button:hover {
-    --background: linear-gradient(-25deg, rgba(1,241,242,1) 0%, rgba(177,0,255,1) 49%, rgba(241,96,187,1) 100%) !important;
-    background-position: 0 0 !important;
-    transition: background ease-out 1s !important;
-  }
+//   // Gradient Background Color + Hover
+//   ion-button,
+//   ion-progress-bar::part(progress) {
+//     background: var(--ion-color-gradient) !important;
+//     --background: var(--ion-color-gradient) !important;
+//     -webkit-transition: all 0.2s linear !important;
+//       -moz-transition: all 0.2s linear !important;
+//         -o-transition: all 0.2s linear !important;
+//           transition: all 0.2s linear !important;
+//   }ion-button:hover {
+//     --background: linear-gradient(-25deg, rgba(1,241,242,1) 0%, rgba(177,0,255,1) 49%, rgba(241,96,187,1) 100%) !important;
+//     background-position: 0 0 !important;
+//     transition: background ease-out 1s !important;
+//   }
 
-  ion-tab-bar,
-  ion-header,
-  ion-toolbar,
-  app-header {
-    background: var(--ion-color-darker) !important;
-    --background: var(--ion-color-darker) !important;
-  }
+//   ion-tab-bar,
+//   ion-header,
+//   ion-toolbar,
+//   app-header {
+//     background: var(--ion-color-darker) !important;
+//     --background: var(--ion-color-darker) !important;
+//   }
  
-}
+// }
 
 // General Theme Variables
 .bg-gray {

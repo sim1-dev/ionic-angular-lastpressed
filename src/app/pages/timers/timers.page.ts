@@ -3,9 +3,10 @@ import { AlertController, LoadingController, ModalController, ToastController } 
 import { Category } from 'src/app/models/category.model';
 import { Timer } from 'src/app/models/timer.model';
 import { LanguageService } from 'src/app/services/language.service';
-import { StorageService } from 'src/app/services/storage.service';
 import { TimeService } from 'src/app/services/time.service';
 import { TimersModalComponent } from './timers-modal/timers-modal.component';
+import { CategoryService } from 'src/app/services/category.service';
+import { TimerService } from 'src/app/services/timer.service';
 
 @Component({
   selector: 'app-timers',
@@ -19,7 +20,7 @@ export class TimersPage {
   now: Date = new Date()
   interval: any
 
-  constructor(private storageService: StorageService, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController, public timeService: TimeService, public languageService: LanguageService) { }
+  constructor(private categoryService: CategoryService, public timerService: TimerService, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController, public timeService: TimeService, public languageService: LanguageService) { }
 
   async ionViewDidEnter() {
     
@@ -38,7 +39,7 @@ export class TimersPage {
 
     loading.present()
 
-    this.categories = await this.storageService.getCategories()
+    this.categories = await this.categoryService.get()
 
     loading.dismiss()
     this.loading = false
@@ -62,7 +63,7 @@ export class TimersPage {
   }
 
   async resetLastPressed(category: Category, timer: Timer) {
-    this.storageService.resetTimer(category, timer)
+    this.timerService.resetTimer(category, timer)
     const toast = await this.toastController.create({
       message: this.languageService.dictionary.timer+' '+timer.name+' '+this.languageService.dictionary.buttonPressed,
       color: 'success',

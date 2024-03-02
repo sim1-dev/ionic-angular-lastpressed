@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { Directory } from '@capacitor/filesystem';
 import { AlertController, LoadingController, ModalController, ToastController } from '@ionic/angular';
 import { Settings } from 'src/app/models/settings.model';
 import { LanguageService } from 'src/app/services/language.service';
-import { StorageService } from 'src/app/services/storage.service';
+import { SettingsService } from 'src/app/services/settings.service';
 
 @Component({
   selector: 'app-settings',
@@ -15,35 +14,35 @@ export class SettingsPage {
   settings: Settings
   generalSaveButtonEnabled: boolean = false
 
-  constructor(private storageService: StorageService, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController, public languageService: LanguageService) { }
+  constructor(private settingsService: SettingsService, public modalController: ModalController, public alertController: AlertController, public toastController: ToastController, public loadingController: LoadingController, public languageService: LanguageService) { }
 
   async ionViewDidEnter() {
-    await this.getSettings()
+    await this.get()
   }
 
-  async getSettings() {
+  async get() {
     let loader = await this.loadingController.create({
       message: this.languageService.dictionary.loading
     })
 
     loader.present()
-    this.settings = await this.storageService.getSettings()
+    this.settings = await this.settingsService.get()
     this.loading = false
     loader.dismiss()
   }
 
-  async resetSettings() {
+  async reset() {
     const alert = await this.alertController.create({
       header: this.languageService.dictionary.alert,
-      message: this.languageService.dictionary.resetSettingsPrompt,
+      message: this.languageService.dictionary.resetPrompt,
       buttons: [
         this.languageService.dictionary.cancel,
         {
           text: this.languageService.dictionary.reset,
           handler: async () => {
             this.loading = true
-            await this.storageService.resetSettings()
-            await this.getSettings()
+            await this.settingsService.reset()
+            await this.get()
             this.loading = false
             this.toastController.create({
               message: this.languageService.dictionary.settingsResetSuccess,
@@ -59,8 +58,8 @@ export class SettingsPage {
     await alert.present()
   }
 
-  async exportSettings() {
-    let response = await this.storageService.exportSettings()
+  async export() {
+    let response = await this.settingsService.export()
     if(response.result) {
       this.toastController.create({
         message: this.languageService.dictionary.settingsExportSuccess+' '+response.message,
@@ -78,10 +77,10 @@ export class SettingsPage {
     }
   }
 
-  async importSettings() {
+  async import() {
     const alert = await this.alertController.create({
       header: this.languageService.dictionary.alert,
-      message: this.languageService.dictionary.importSettingsPrompt,
+      message: this.languageService.dictionary.importPrompt,
       buttons: [
         this.languageService.dictionary.cancel,
         {
@@ -93,7 +92,7 @@ export class SettingsPage {
         
             loader.present()
             this.loading = true
-            let response = await this.storageService.importSettings()
+            let response = await this.settingsService.import()
             this.loading = false
             loader.dismiss()
             if(response.result) {
@@ -130,7 +129,7 @@ export class SettingsPage {
     })
     loader.present()
     this.generalSaveButtonEnabled = false
-    this.storageService.saveGeneralSettings(this.settings)
+    this.settingsService.saveGeneral(this.settings)
     loader.dismiss()
     this.loading = false
     this.toastController.create({
@@ -139,7 +138,7 @@ export class SettingsPage {
       duration: 2000,
       cssClass: 'tabs-bottom',
     }).then(toast => toast.present())
-    await this.getSettings()
+    await this.get()
 
   }
 
